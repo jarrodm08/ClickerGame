@@ -9,18 +9,19 @@ public class MainMenuManager : MonoBehaviour
     
     void Start()
     {
+        //Spawn Clouds Continuously
         InvokeRepeating("spawnCloud",0,cloudSpeed);
     }
 
     void Update()
     {
+        //Handle Movement of clouds
         moveCloud();
     }
 
     public void playButton()
     {
         //change scene to the scene indexed after this scene
-        Debug.Log("Changing Scene");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
