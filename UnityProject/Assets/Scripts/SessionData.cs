@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SessionData : MonoBehaviour
 {
-    public bool loadGame = false;
+    public bool dataLoaded = false;
     //Set as default values
     public bool isTutorialFinished = false;
     public int tutorialIndex = 0; // Stage of the tutorial we are at
@@ -17,14 +17,14 @@ public class SessionData : MonoBehaviour
             isTutorialFinished = data.isTutorialFinished;
             tutorialIndex = data.tutorialIndex;
 
-            loadGame = true;
+            dataLoaded = true;
         }
         else
         {
             // Create new player data with the default values
             SaveManager.savePlayerData(this);
 
-            loadGame = true;
+            dataLoaded = true;
         }
     }
 

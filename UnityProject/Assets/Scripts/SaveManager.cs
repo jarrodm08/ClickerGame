@@ -19,7 +19,6 @@ public static class SaveManager
 
     public static PlayerData loadPlayer()
     {
-        Debug.Log("Loading player");
         string path = Application.persistentDataPath + "/player.anyExtension";
         if (File.Exists(path))
         {

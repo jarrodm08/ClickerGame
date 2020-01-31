@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
-    public bool doTutorial = true;
+    
 
     // Start is called before the first frame update
     void Start()
