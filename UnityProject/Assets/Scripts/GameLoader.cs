@@ -16,10 +16,6 @@ public class GameLoader : MonoBehaviour
     //--------------//
 
 
-
-
-
-
     //PREFABS-----//
 
     public GameObject playerPrefab;
@@ -48,7 +44,6 @@ public class GameLoader : MonoBehaviour
         gameLoading = true;
         //Spawn Player
         GameObject player = Instantiate(playerPrefab, playerSpawnPoint.transform.position, playerSpawnPoint.transform.rotation, playerSpawnPoint.transform);
-
         //Load Normal Game |OR| Load Tutorial
         if (this.GetComponent<SessionData>().isTutorialFinished == true)
         { //Normal Game
@@ -59,6 +54,7 @@ public class GameLoader : MonoBehaviour
             
             GameObject tutorialManager = Instantiate(tutorialManagerPrefab,transform.parent.Find("Canvas"));
             tutorialManager.GetComponent<TutorialManager>().tutorialReady = true;
+            tutorialManager.GetComponent<TutorialManager>().player = player;
         }
     }
 }

@@ -5,9 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - collision_Ground
-  - collision_Monster
   - monster_healthbar
   - cloud
+  - collision_PointA
+  - collision_PointB
   layers:
   - Default
   - TransparentFX

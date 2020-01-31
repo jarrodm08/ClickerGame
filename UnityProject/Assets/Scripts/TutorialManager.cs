@@ -9,6 +9,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject eDialogue;
     public bool tutorialReady = false;
     public int tutorialIndex;
+    public GameObject player;
     //---------//
 
     // Private//
@@ -31,54 +32,14 @@ public class TutorialManager : MonoBehaviour
         //----------------//
 
 
-        tutorialIndex = GameObject.FindObjectOfType<GameLoader>().GetComponent<SessionData>().tutorialIndex;
+        tutorialIndex = GameObject.FindObjectOfType<GameLoader>().GetComponent<SessionData>().tutorialIndex; // Load saved data containing tutorial stage
     }
 
 
     void Update()
     {
-       
-        //Track and do stages of the tutorial
         tutorialState();
-        //Tracks and handles visability control of the dialogue box
-        //dialogueVisability();
-        //Tracks and handles visability control of the continue dialogue button
-        //continueDialogueVisibility();
     }
-
-
-
-    // Tracks and handles visability control of the dialogue box
-    private bool openDialogue = false;
-    private void dialogueVisability()
-    {
-        if (openDialogue == true)
-        {
-            eDialogue.SetActive(true);
-        }
-        else
-        {
-            eDialogue.SetActive(false);
-        }
-    }
-
-    // Tracks and handles visability control of the continue dialogue button
-    private bool dialogueFinished = false;
-    private void continueDialogueVisibility()
-    {
-        if (dialogueFinished == true)
-        {
-            continueDialogueBtn.SetActive(true);
-        }
-        else 
-        {
-            continueDialogueBtn.SetActive(false);
-        }
-    }
-    
-
-
-
 
     private bool tutorialDB = false;
     public void continueTutorial()
@@ -149,10 +110,6 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-
-
-
-
     private void tutorialState()
     {
         if (tutorialReady == true && GameObject.FindObjectOfType<Player>().isGrounded == true && tutorialDB != true)
@@ -161,25 +118,108 @@ public class TutorialManager : MonoBehaviour
             {
                 dialogueText.text = "Welcome stranger! My name is " + advisorName + "."; // Set text to display
                 toggleDialogue(); // Display the text
-
-                toggleContinue(); //Allow player to continue tutorial once a condition is met, or, continue without conditions for continued dialogue like this stage
+                //Allow player to continue tutorial, put inside an if statement to require a condition(s) to be met first
+                toggleContinue(); 
             }
             else if (tutorialIndex == 1)
             {
-                dialogueText.text = "Press left arrow to continue";
-                toggleDialogue(); // show dialogue
-
-                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                if (player.GetComponent<Player>().moveDB == false)
                 {
+                    player.GetComponent<Player>().moveDB = true;
+                    player.GetComponent<Player>().moveToPointA = true;
+                    player.GetComponent<Player>().isRunning = true; // *** Change to isWalking for slower movement/animation ****
+                    //player.GetComponent<Player>().isWalking = true;
+                }
+
+                if (player.GetComponent<Player>().moveToPointA == false)
+                {
+                    dialogueText.text = "Aha! There you are! For a second I was worried you got lost...";
+                    toggleDialogue();
                     toggleContinue();
                 }
             }
             else if (tutorialIndex == 2)
             {
-                dialogueText.text = "Press right arrow to continue";
-                toggleDialogue(); // show dialogue
+                dialogueText.text = "Let's introduce you to some of the game's mechanics";
+                toggleDialogue();
+                toggleContinue();
+            }
+            else if (tutorialIndex ==3)
+            {
+                dialogueText.text = "placeholderText";
+                toggleDialogue();
 
-                if (Input.GetKeyDown(KeyCode.RightArrow))
+                if (1 + 1 == 2)
+                {
+                    toggleContinue();
+                }
+            }
+            else if (tutorialIndex == 4)
+            {
+                dialogueText.text = "placeholderText";
+                toggleDialogue();
+
+                if (1 + 1 == 2)
+                {
+                    toggleContinue();
+                }
+            }
+            else if (tutorialIndex == 5)
+            {
+                dialogueText.text = "placeholderText";
+                toggleDialogue();
+
+                if (1 + 1 == 2)
+                {
+                    toggleContinue();
+                }
+            }
+            else if (tutorialIndex == 6)
+            {
+                dialogueText.text = "placeholderText";
+                toggleDialogue();
+
+                if (1 + 1 == 2)
+                {
+                    toggleContinue();
+                }
+            }
+            else if (tutorialIndex == 7)
+            {
+                dialogueText.text = "placeholderText";
+                toggleDialogue();
+
+                if (1 + 1 == 2)
+                {
+                    toggleContinue();
+                }
+            }
+            else if (tutorialIndex == 8)
+            {
+                dialogueText.text = "placeholderText";
+                toggleDialogue();
+
+                if (1 + 1 == 2)
+                {
+                    toggleContinue();
+                }
+            }
+            else if (tutorialIndex == 9)
+            {
+                dialogueText.text = "placeholderText";
+                toggleDialogue();
+
+                if (1 + 1 == 2)
+                {
+                    toggleContinue();
+                }
+            }
+            else if (tutorialIndex == 10)
+            {
+                dialogueText.text = "placeholderText";
+                toggleDialogue();
+
+                if (1 + 1 == 2)
                 {
                     toggleContinue();
                 }

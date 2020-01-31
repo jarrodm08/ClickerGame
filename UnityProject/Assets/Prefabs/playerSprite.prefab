@@ -155,3 +155,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGrounded: 0
+  moveToPointA: 0
+  movetoPointB: 0
+  isRunning: 0
+  isWalking: 0
+  playerAnimator: {fileID: 95672630130132070}
+  moveDB: 0
