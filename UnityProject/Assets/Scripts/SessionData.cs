@@ -12,6 +12,7 @@ public class SessionData : MonoBehaviour
 
     void Start()
     {
+        print(isTutorialFinished);
         PlayerData data = SaveManager.loadPlayer();
         if (data != null)
         {
@@ -23,6 +24,7 @@ public class SessionData : MonoBehaviour
         }
         else
         {
+            Debug.Log("new player data: " + isTutorialFinished);
             // Create new player data with the default values
             SaveManager.savePlayerData(this);
 

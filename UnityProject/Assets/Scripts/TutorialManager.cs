@@ -112,7 +112,7 @@ public class TutorialManager : MonoBehaviour
 
     private void tutorialState()
     {
-        if (tutorialReady == true && GameObject.FindObjectOfType<Player>().isGrounded == true && tutorialDB != true)
+        if (tutorialReady == true && player.GetComponent<Player>().isGrounded == true && tutorialDB != true)
         {
             if (tutorialIndex == 0)
             {
@@ -224,6 +224,14 @@ public class TutorialManager : MonoBehaviour
                     toggleContinue();
                 }
             }
+            else
+            {
+                Debug.Log(tutorialIndex);
+            }
+        }
+        else
+        {
+            Debug.Log(tutorialReady + " " + player.GetComponent<Player>().isGrounded + " " + tutorialDB);
         }
     }
 }

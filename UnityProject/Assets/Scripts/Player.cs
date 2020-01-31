@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
     {
         if (collision.collider.tag == "collision_Ground")
         {
+            Debug.Log("Collided with groud collider");
             isGrounded = true;
         }
         if (collision.collider.tag == "collision_PointA")

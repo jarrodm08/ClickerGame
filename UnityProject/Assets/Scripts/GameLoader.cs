@@ -47,7 +47,7 @@ public class GameLoader : MonoBehaviour
         //Load Normal Game |OR| Load Tutorial
         if (this.GetComponent<SessionData>().isTutorialFinished == true)
         { //Normal Game
-            
+            Debug.Log("Load normal game");
         }
         else if (this.GetComponent<SessionData>().isTutorialFinished == false)
         { //Tutorial
@@ -55,6 +55,7 @@ public class GameLoader : MonoBehaviour
             GameObject tutorialManager = Instantiate(tutorialManagerPrefab,transform.parent.Find("Canvas"));
             tutorialManager.GetComponent<TutorialManager>().tutorialReady = true;
             tutorialManager.GetComponent<TutorialManager>().player = player;
+            Debug.Log("Load tutorial game");
         }
     }
 }
