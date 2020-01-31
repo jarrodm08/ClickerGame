@@ -54,12 +54,13 @@ public class PlayerData
 {
     public bool isTutorialFinished;
     public int tutorialIndex;
-
+    public float playerDPS;
 
     //How we save/parse the games data
     public PlayerData(SessionData saveData)
     {
         isTutorialFinished = saveData.isTutorialFinished;
         tutorialIndex = saveData.tutorialIndex;
+        playerDPS = saveData.playerDPS;
     }
 }

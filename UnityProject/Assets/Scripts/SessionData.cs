@@ -8,6 +8,7 @@ public class SessionData : MonoBehaviour
     //Set as default values
     public bool isTutorialFinished = false;
     public int tutorialIndex = 0; // Stage of the tutorial we are at
+    public float playerDPS = 0f;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class SessionData : MonoBehaviour
         {
             isTutorialFinished = data.isTutorialFinished;
             tutorialIndex = data.tutorialIndex;
+            playerDPS = data.playerDPS;
 
             dataLoaded = true;
         }
