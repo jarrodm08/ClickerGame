@@ -1,14 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class GameLoader : MonoBehaviour
 {
     public bool gameLoading = false;
     public GameObject playerSpawnPoint;
+    //Tutorial Stuff//
+    public GameObject eDialogue;
+    public GameObject tutorialManagerPrefab;
+    public GameObject continueDialogueBtn;
+    public TextMeshProUGUI advisorNameText;
+    public TextMeshProUGUI dialogueText;
+    //--------------//
+
+
+
+
+
 
     //PREFABS-----//
-    public GameObject tutorialManagerPrefab;
+
     public GameObject playerPrefab;
     //------------//
 
@@ -45,10 +58,7 @@ public class GameLoader : MonoBehaviour
         { //Tutorial
             
             GameObject tutorialManager = Instantiate(tutorialManagerPrefab,transform.parent.Find("Canvas"));
-            tutorialManager.GetComponent<TutorialManager>().startTutorial();
-            
+            tutorialManager.GetComponent<TutorialManager>().tutorialReady = true;
         }
-
-
     }
 }

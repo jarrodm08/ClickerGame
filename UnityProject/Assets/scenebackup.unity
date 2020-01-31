@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 267504625}
   - component: {fileID: 267504624}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: dialogueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -571,8 +571,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameLoading: 0
   playerSpawnPoint: {fileID: 1454713766}
-  tutorialManagerPrefab: {fileID: 8783441922920856710, guid: 2bc579fa54a4b704f90424cfb4b24cd0,
+  eDialogue: {fileID: 1908528791}
+  tutorialManagerPrefab: {fileID: 5806962821299107410, guid: 2bc579fa54a4b704f90424cfb4b24cd0,
     type: 3}
+  continueDialogueBtn: {fileID: 911229377}
+  advisorNameText: {fileID: 727333454}
+  dialogueText: {fileID: 267504624}
   playerPrefab: {fileID: 3293269079226118404, guid: 63bda37f9fb337d4586d553d35ce9ea6,
     type: 3}
 --- !u!1 &515257955
@@ -845,6 +849,7 @@ GameObject:
   - component: {fileID: 766328346}
   - component: {fileID: 766328348}
   - component: {fileID: 766328347}
+  - component: {fileID: 766328349}
   m_Layer: 5
   m_Name: AdvisorImage
   m_TagString: Untagged
@@ -869,7 +874,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1600, y: 0}
+  m_SizeDelta: {x: 557.8, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &766328347
 MonoBehaviour:
@@ -906,6 +911,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766328345}
   m_CullTransparentMesh: 0
+--- !u!114 &766328349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766328345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1254083943, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 2
+  m_AspectRatio: 1
 --- !u!1 &829404291
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,7 +1061,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &911229378
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1102,7 +1121,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 911229380}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &911229380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1320,7 +1350,7 @@ GameObject:
   - component: {fileID: 1214223722}
   m_Layer: 5
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: collision_Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1357,7 +1387,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 16.516724, y: -239.1109}
+  m_Offset: {x: 16.516602, y: -25.440584}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1368,7 +1398,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5087.1396, y: 479.6953}
+  m_Size: {x: 5087.1396, y: 52.35468}
   m_EdgeRadius: 0
 --- !u!114 &1214223723
 MonoBehaviour:
@@ -1972,7 +2002,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.10021973}
   m_SizeDelta: {x: 0, y: 435}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2071147483
