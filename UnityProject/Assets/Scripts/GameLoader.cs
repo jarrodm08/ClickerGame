@@ -5,13 +5,13 @@ using UnityEngine;
 public class GameLoader : MonoBehaviour
 {
     public bool gameLoading = false;
-    // Start is called before the first frame update
+    public GameObject tutorialManagerPrefab;
+
     void Start()
     {
         
     }
 
-    
     void Update()
     {
         
@@ -28,6 +28,13 @@ public class GameLoader : MonoBehaviour
     {
         gameLoading = true;
         Debug.Log("Loading game now");
+        // SPAWN PLAYER
+
+        
+        
+        
+        //
+
 
         if (this.GetComponent<SessionData>().isTutorialFinished == true)
         {
@@ -36,7 +43,11 @@ public class GameLoader : MonoBehaviour
         else if (this.GetComponent<SessionData>().isTutorialFinished == false)
         {
             // Load tutorial
-            Debug.Log("Start tutrial now");
+            GameObject tutorialManager = Instantiate(tutorialManagerPrefab,transform.parent.Find("Canvas"));
+            tutorialManager.GetComponent<TutorialManager>().startTutorial();
+            
         }
+
+
     }
 }

@@ -17,4 +17,9 @@ public class TutorialManager : MonoBehaviour
     {
         
     }
+
+    public void startTutorial()
+    {
+        Debug.Log("Tutorial script, starting tutorial");
+    }
 }
