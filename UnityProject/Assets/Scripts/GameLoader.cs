@@ -5,8 +5,6 @@ using UnityEngine.UI;
 using TMPro;
 public class GameLoader : MonoBehaviour
 {
-    public bool gameLoading = false;
-    public GameObject playerSpawnPoint;
     //Tutorial Stuff//
     public GameObject eDialogue;
     public GameObject tutorialManagerPrefab;
@@ -15,16 +13,26 @@ public class GameLoader : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     //--------------//
 
+    public bool gameLoading = false;
+    public GameObject playerSpawnPoint;
+
+    //Panel Buttons //
+    public List<GameObject> panelBtnList;
+    public List<Sprite> panelBtnSprites;
+    public GameObject btnContainer;
+    //--------------//
+
+    public GameObject dpsContainer;
+    public TextMeshProUGUI dpsText;
 
     //PREFABS-----//
-
     public GameObject playerPrefab;
     //------------//
 
 
     void Start()
     {
-        
+       // panelBtnList[0].transform.Find("icon").gameObject.GetComponent<Image>().sprite = panelBtnSprites[0];
     }
 
     void Update()

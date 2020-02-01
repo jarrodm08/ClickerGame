@@ -10,6 +10,7 @@ public class TutorialManager : MonoBehaviour
     public bool tutorialReady = false;
     public int tutorialIndex;
     public GameObject player;
+    public GameLoader gameLoader;
     //---------//
 
     // Private//
@@ -21,6 +22,7 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
+        gameLoader = GameObject.FindObjectOfType<GameLoader>();
         eDialogue = GameObject.FindObjectOfType<GameLoader>().eDialogue;
 
         //Setup Dialogue Stuff//
@@ -71,13 +73,12 @@ public class TutorialManager : MonoBehaviour
 
             if (eDialogue.activeSelf == true)
             {
-                eDialogue.SetActive(false); // show dialogue
-                Debug.Log("Hide dialogue");
+                eDialogue.SetActive(false); // hide dialogue
+                Debug.Log("Hiding dialogue");
             }
             else
             {
-                eDialogue.SetActive(true); // show dialogue
-                Debug.Log("Show dialogue ");
+                eDialogue.SetActive(true); // show dialogue             
             }
 
             if (closeDB == true)
@@ -144,65 +145,60 @@ public class TutorialManager : MonoBehaviour
                 toggleDialogue();
                 toggleContinue();
             }
-            else if (tutorialIndex ==3)
+            else if (tutorialIndex == 3)
             {
-                dialogueText.text = "placeholderText";
+                GameObject.FindObjectOfType<GameLoader>().btnContainer.SetActive(true);
+                dialogueText.text = "Here are a list of four panels, though only two of them have been implemented.";
                 toggleDialogue();
-
-                if (1 + 1 == 2)
-                {
-                    toggleContinue();
-                }
+                toggleContinue();
             }
             else if (tutorialIndex == 4)
             {
-                dialogueText.text = "placeholderText";
-                toggleDialogue();
+                gameLoader.panelBtnList[0].transform.Find("icon").GetComponent<Image>().sprite = gameLoader.panelBtnSprites[1];
+                gameLoader.panelBtnList[0].GetComponent<Image>().color = new Color32(255, 255, 225, 255);
+                dialogueText.text = "This panel is where you can find your player upgrades that effect your character directly.";
 
-                if (1 + 1 == 2)
-                {
-                    toggleContinue();
-                }
+                toggleDialogue();
+                toggleContinue();
             }
             else if (tutorialIndex == 5)
             {
-                dialogueText.text = "placeholderText";
+                gameLoader.panelBtnList[0].GetComponent<Image>().color = new Color32(115, 115, 115, 115); //temporarily revert the 1st buttons color
+                gameLoader.panelBtnList[1].transform.Find("icon").GetComponent<Image>().sprite = gameLoader.panelBtnSprites[2];
+                gameLoader.panelBtnList[1].GetComponent<Image>().color = new Color32(255, 255, 225, 255);
+                dialogueText.text = "This panel is where you can find upgrades relating to your sidekicks";
+                
                 toggleDialogue();
-
-                if (1 + 1 == 2)
-                {
-                    toggleContinue();
-                }
+                toggleContinue();
             }
             else if (tutorialIndex == 6)
             {
-                dialogueText.text = "placeholderText";
-                toggleDialogue();
+                gameLoader.panelBtnList[1].GetComponent<Image>().color = new Color32(115, 115, 115, 115); //temporarily revert the 1st buttons color
+                gameLoader.panelBtnList[2].GetComponent<Image>().color = new Color32(255, 255, 225, 255);
+                gameLoader.panelBtnList[3].GetComponent<Image>().color = new Color32(255, 255, 225, 255);
+                dialogueText.text = "These panels have not been implemented yet, but keep an eye out for when they do!";
 
-                if (1 + 1 == 2)
-                {
-                    toggleContinue();
-                }
+                toggleDialogue();
+                toggleContinue();
             }
             else if (tutorialIndex == 7)
             {
-                dialogueText.text = "placeholderText";
-                toggleDialogue();
+                gameLoader.panelBtnList[2].GetComponent<Image>().color = new Color32(115, 115, 115, 115);
+                gameLoader.panelBtnList[3].GetComponent<Image>().color = new Color32(115, 115, 115, 115);
+                gameLoader.panelBtnList[0].GetComponent<Image>().color = new Color32(255, 255, 225, 255);
+                gameLoader.panelBtnList[1].GetComponent<Image>().color = new Color32(255, 255, 225, 255);
+                dialogueText.text = "Now lets move on";
 
-                if (1 + 1 == 2)
-                {
-                    toggleContinue();
-                }
+                toggleDialogue();
+                toggleContinue();
             }
             else if (tutorialIndex == 8)
             {
-                dialogueText.text = "placeholderText";
-                toggleDialogue();
+                gameLoader.dpsContainer.SetActive(true);          
+                dialogueText.text = "Here you can find how much damage your player is dealing per second, also known as 'DPS'";
 
-                if (1 + 1 == 2)
-                {
-                    toggleContinue();
-                }
+                toggleDialogue();
+                toggleContinue();
             }
             else if (tutorialIndex == 9)
             {
@@ -224,14 +220,11 @@ public class TutorialManager : MonoBehaviour
                     toggleContinue();
                 }
             }
-            else
-            {
-                Debug.Log(tutorialIndex);
-            }
         }
-        else
-        {
-            Debug.Log(tutorialReady + " " + player.GetComponent<Player>().isGrounded + " " + tutorialDB);
-        }
+    }
+
+    void testme()
+    {
+        Debug.Log("WOrked");
     }
 }
