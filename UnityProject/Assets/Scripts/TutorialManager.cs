@@ -73,8 +73,7 @@ public class TutorialManager : MonoBehaviour
 
             if (eDialogue.activeSelf == true)
             {
-                eDialogue.SetActive(false); // hide dialogue
-                Debug.Log("Hiding dialogue");
+                eDialogue.SetActive(false); // hide dialogue              
             }
             else
             {
@@ -111,6 +110,7 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    private bool atkDB = false;
     private void tutorialState()
     {
         if (tutorialReady == true && player.GetComponent<Player>().isGrounded == true && tutorialDB != true)
@@ -141,6 +141,7 @@ public class TutorialManager : MonoBehaviour
             }
             else if (tutorialIndex == 2)
             {
+                player.GetComponent<Player>().moveDB = false;
                 dialogueText.text = "Let's introduce you to some of the game's mechanics";
                 toggleDialogue();
                 toggleContinue();
@@ -202,6 +203,124 @@ public class TutorialManager : MonoBehaviour
             }
             else if (tutorialIndex == 9)
             {
+                dialogueText.text = "Let's spawn our first enemy and show you the rest of the UI'";
+
+                toggleDialogue();
+                toggleContinue();
+            }
+            else if (tutorialIndex == 10)
+            {
+                gameLoader.gameObject.GetComponent<BattleManager>().spawnMonster();
+
+                if (gameLoader.gameObject.GetComponent<BattleManager>().activeMonster !=  null)
+                {
+                    GameObject monster = gameLoader.gameObject.GetComponent<BattleManager>().activeMonster;
+                    if (monster.GetComponent<Monster>().isGrounded == true)
+                    {
+                        if (monster.GetComponent<Monster>().moveDB == false)
+                        {
+                            monster.GetComponent<Monster>().moveDB = true;
+                            monster.GetComponent<Monster>().moveToPointA = true;
+                        }
+
+                       
+                        if (monster.GetComponent<Monster>().moveToPointA == false)
+                        {
+                            dialogueText.text = "Here you'll find the monster's health.";
+                            toggleDialogue();
+
+                            gameLoader.gameObject.GetComponent<BattleManager>().eHealthBar.SetActive(true);
+                            toggleContinue();
+                        }
+                    }  
+                }
+            }
+            else if (tutorialIndex == 11)
+            {
+                dialogueText.text = "Here you'll find how much progress you've made on this current stage";
+                toggleDialogue();
+
+                gameLoader.gameObject.GetComponent<BattleManager>().eMonsterCounter.SetActive(true);
+                toggleContinue();
+            }
+            else if (tutorialIndex == 12)
+            {
+                dialogueText.text = "Let's walk up to him and show him whos boss ";
+                toggleDialogue();
+                toggleContinue();
+            }
+            else if (tutorialIndex == 13)
+            {
+                if (player.GetComponent<Player>().moveDB == false)
+                {
+                    player.GetComponent<Player>().moveDB = true;
+                    player.GetComponent<Player>().moveToPointB = true;
+                    player.GetComponent<Player>().isRunning = true; // *** Change to isWalking for slower movement/animation ****
+                    //player.GetComponent<Player>().isWalking = true;
+                }
+
+                if (player.GetComponent<Player>().moveToPointB == false)
+                {
+                    dialogueText.text = "Lets kick some butt";
+                    toggleDialogue();
+                    toggleContinue();
+                }
+            }
+            else if (tutorialIndex == 14)
+            {
+               
+                if (atkDB == false)
+                {
+                    atkDB = true;
+                    player.GetComponent<Player>().attack();
+                }
+               
+                if (GameObject.FindObjectOfType<BattleManager>().monsterCurrentHP == 9)
+                {
+                    dialogueText.text = "Great job! Keep going until his health reaches zero!";
+                    toggleDialogue();
+                    toggleContinue();
+                }
+            }
+            else if (tutorialIndex == 15)
+            {
+                if (atkDB == true)
+                {
+                    if (player.GetComponent<Player>().swingDB == false)
+                    {
+                        player.GetComponent<Player>().attack();
+                    }
+
+                    if (GameObject.FindObjectOfType<BattleManager>().monsterCurrentHP == 0)
+                    {
+                        dialogueText.text = "Oh look! A coin! Let's click on it to pick it up";
+                        toggleDialogue();
+                        if (GameObject.FindObjectOfType<BattleManager>().currentCoins >= 1)
+                        {
+                            dialogueText.text = "Great! Now lets spend it to increase your damage!";
+                            toggleContinue();
+                        }
+                    }
+                }
+                
+            }
+            else if (tutorialIndex == 16)
+            {
+                dialogueText.text = "Click the red tab to open up your player upgrades";
+                toggleDialogue();
+                bool setDB = false;
+                if (setDB == false)
+                {
+                    setDB = true;
+                    GameObject.FindObjectOfType<GameLoader>().panelBtnList[0].GetComponent<Button>().onClick.AddListener(GameObject.FindObjectOfType<GameLoader>().togglePlayerUpgrades);
+                }
+                if (GameObject.FindObjectOfType<GameLoader>().playerUpgradesTab.activeSelf == true)
+                {
+                    dialogueText.text = "Now buy the upgrade";
+                }
+            }
+            else if (tutorialIndex == 17)
+            {
                 dialogueText.text = "placeholderText";
                 toggleDialogue();
 
@@ -210,7 +329,17 @@ public class TutorialManager : MonoBehaviour
                     toggleContinue();
                 }
             }
-            else if (tutorialIndex == 10)
+            else if (tutorialIndex == 18)
+            {
+                dialogueText.text = "placeholderText";
+                toggleDialogue();
+
+                if (1 + 1 == 2)
+                {
+                    toggleContinue();
+                }
+            }
+            else if (tutorialIndex == 19)
             {
                 dialogueText.text = "placeholderText";
                 toggleDialogue();

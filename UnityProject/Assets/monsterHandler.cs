@@ -9,6 +9,7 @@ public class monsterHandler : MonoBehaviour
     public bool isBattleReady = false;
     public Animator monsterAnimator;
 
+    public GameObject activeMonster;
 
     // Start is called before the first frame update
     void Start()
